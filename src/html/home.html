@@ -1,0 +1,29 @@
+<div ng-if="categories && genres" style="background:#F5F5F5">
+    <div class="container">
+        {{initSorting()}}
+
+        <div class="col-md-12 madlib">
+        	Show me 
+            <select ng-model="data.selectedCategory" ng-change="filter()">
+                <option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+            </select>
+            books about 
+            <select style="margin-right:0px;" ng-model="data.selectedGenre" ng-change="filter()">
+                <option ng-repeat="genre in genres" value="{{genre}}">{{genre}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-top:10px;">
+    <div ng-repeat="book in books" style="display:inline;font-size:0px;">
+            <a ng-if='(book.genre.name == data.selectedGenre || data.selectedGenre == "Everything") && (book.genre.category == data.selectedCategory || data.selectedCategory == "All")' href="/book/{{book.slug}}">
+            	<div class="book-tile col-md-2 clearfix">
+            		<img class="cover" ng-src="{{book.cover}}">
+            		<h5>{{book.name}}</h5>
+            		<h6>{{book.author.name}}</h6>
+            	</div>
+            </a>
+        </div>
+    </div>
+</div>

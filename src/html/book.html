@@ -1,0 +1,55 @@
+<div style="background:#F5F5F5;">
+	<div class="container">
+		<div class="col-md-10 col-md-push-1 meta">
+			<h2>
+				{{book.name}}
+			</h2>
+
+			<h3>
+				{{book.author.name}}
+			</h3>
+
+			<p>
+				{{book.description}}
+			</p>
+
+			<p>
+				<label style="background:#4000FF"><i class="fa icon-star"></i> {{book.likes}}</label>
+				<label>{{book.genre.category}}</label>
+				<label>{{book.genre.name}}</label>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="col-md-8 col-md-push-2 prose">
+		<h4>INTRODUCTION</h4>
+
+		<p ng-repeat="p in book.introduction">
+			{{p.content}}
+		</p>
+	</div>
+</div>
+
+<div style="background:#F5F5F5;">
+	<div class="container">
+		<div class="col-md-10 col-md-push-1 meta">
+			<h2>
+				If you liked reading that...
+			</h2>
+
+			<a href="/book/{{relative.slug}}" ng-repeat="relative in related | limitTo: 4">
+				<div class="col-md-3 book-tile clearfix">
+	        		<img class="cover" ng-src="{{relative.cover}}">
+	        		<h5>{{relative.name}}</h5>
+	        		<h6>{{relative.author.name}}</h6>
+	        		<p style="text-align:right;">
+	        			<label style="background:#4000FF;margin-right:0px;margin-top:10px;"><i class="fa icon-star"></i> {{relative.likes}}</label>
+	        		</p>
+				</div>
+			</a>
+			
+		</div>
+	</div>
+</div>
