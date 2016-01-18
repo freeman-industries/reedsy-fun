@@ -4,7 +4,7 @@ app.run ['$rootScope', ($rootScope) ->
 
 	$rootScope.data = {}
 
-	$.get("/cage.json", (books) ->
+	$.get(window.location.href + "cage.json", (books) ->
 		$rootScope.books = books
 
 		categories = []
