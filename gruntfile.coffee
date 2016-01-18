@@ -60,6 +60,11 @@ module.exports = (grunt) ->
         files:
           'dist/css/style.min.css': ['src/css/*.css']
 
+    'gh-pages':
+      options:
+        base: 'dist'
+      src: ['**']
+
   # These plugins provide necessary tasks
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
@@ -67,6 +72,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-html2js'
   grunt.loadNpmTasks 'grunt-uncss'
+  grunt.loadNpmTasks 'grunt-gh-pages'
 
   # Default task
   grunt.registerTask 'default', ['coffee', 'html2js', 'concat', 'uglify', 'cssmin']
